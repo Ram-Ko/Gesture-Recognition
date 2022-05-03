@@ -16,3 +16,16 @@ Stop: Pause the movie
 The training data consists of a few hundred videos categorised into one of the five classes. Each video (typically 2-3 seconds long) is divided into a sequence of 30 frames(images). These videos have been recorded by various people performing one of the five gestures in front of a webcam - similar to what the smart TV will use.
 
 The data is in a zip file. The zip file contains a 'train' and a 'val' folder with two CSV files for the two folders. These folders are in turn divided into subfolders where each subfolder represents a video of a particular gesture. Each subfolder, i.e. a video, contains 30 frames (or images). Note that all images in a particular video subfolder have the same dimensions but different videos may have different dimensions. Specifically, videos have two types of dimensions - either 360x360 or 120x160 (depending on the webcam used to record the videos).
+
+# Architecture:
+
+Out of 30 frames we have in frame i have used only 5 frames per video (Odd numbered frames) so that it will reduce number of parameters to be trained
+
+I used a bit transfer learning here from inception models
+
+1) Inception model traning 9 layers
+2) Two GRU layers 64 and 128 Units
+3) One Dense layer 256 neurons
+4) SOftmax
+
+Validation Accuracy is 0.89 and Train Accuracy is 0.99
